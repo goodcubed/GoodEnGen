@@ -1,34 +1,34 @@
 class GoodBlurb::BlurbsController < ApplicationController
-   unloadable
+   # unloadable
    respond_to :html,  :js
    def index
-      @blurbs = Blurb.all
+      @blurbs = GoodBlurb::Blurb.all
    end
 
    def show
-      @blurb = Blurb.find(params[:id])
+      @blurb = GoodBlurb::Blurb.find(params[:id])
    end
 
    def new
-      @blurb = Blurb.new
+      @blurb = GoodBlurb::Blurb.new
    end
 
    def edit
-      @blurb = Blurb.find(params[:id])
+      @blurb = GoodBlurb::Blurb.find(params[:id])
    end
 
    def create
-      @blurb = Blurb.new(params[:blurb])
+      @blurb = GoodBlurb::Blurb.new(params[:good_blurb_blurb])
       if @blurb.save
-         redirect_to(@blurb, :notice => 'Blurb was successfully created.')
+         redirect_to(blurbs_path, :notice => 'Blurb was successfully created.')
       else
          render :action => "new"
       end
    end
 
    def update
-      @blurb = Blurb.find(params[:id])
-      if @blurb.update_attributes(params[:blurb])
+      @blurb = GoodBlurb::Blurb.find(params[:id])
+      if @blurb.update_attributes(params[:good_blurb_blurb])
          redirect_to(@blurb, :notice => 'Blurb was successfully updated.')
       else
          render :action => "edit"
@@ -36,7 +36,7 @@ class GoodBlurb::BlurbsController < ApplicationController
    end
 
    def destroy
-      @blurb = Blurb.find(params[:id])
+      @blurb = GoodBlurb::Blurb.find(params[:id])
       @blurb.destroy
       redirect_to(blurbs_url)
    end

@@ -15,8 +15,8 @@
     <td><%= blurb.headline %></td>
     <td><%= blurb.story %></td>
     <td><%= blurb.creator_id %></td>
-    <td><%= link_to 'Show', show_blurb_path(blurb) %></td>
-    <td><%= link_to 'Edit', edit_blurb_path(blurb) %></td>
+    <td><%#= link_to 'Show', show_blurb_path(blurb) %></td>
+    <td><%#= link_to 'Edit', edit_blurb_path(blurb) %></td>
     <td><%#= link_to 'Destroy', blurb, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -25,4 +25,3 @@
 <br />
 
 <%= link_to 'New Blurb', new_blurb_path %>
-<%= helper_for_widgets_view %>

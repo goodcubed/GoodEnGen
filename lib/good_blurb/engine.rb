@@ -5,5 +5,6 @@ require "rails"
 
 module GoodBlurb
  class Engine < Rails::Engine
+    
   end
 end

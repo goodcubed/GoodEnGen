@@ -1,4 +1,4 @@
-<%= form_for(@blurb) do |f| %>
+<%= form_for(@blurb, :url => blurbs_path) do |f| %>
   <% if @blurb.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@blurb.errors.count, "error") %> prohibited this blurb from being saved:</h2>
