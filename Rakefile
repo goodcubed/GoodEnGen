@@ -1,4 +1,4 @@
-puts 'loading dependencies.....'
+puts "sorry for the wait, I'm dealing with some dependency issues at the moment....."
 
 require 'rake'
 require 'en_gen.rb'
@@ -9,19 +9,6 @@ require 'active_support/inflector'
 include FileUtils
 
    
-begin
-  require "jeweler"
-  Jeweler::Tasks.new do |gem|
-    gem.name = "good_blurb"
-    gem.summary = "Blurb engine for GoodContent management system"
-    gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
-    # other fields that would normally go in your gemspec
-    # like authors, email and has_rdoc can also be included here
-
-  end
-rescue
-  puts "Jeweler or one of its dependencies is not installed."
-end
 
 begin
    
@@ -35,8 +22,7 @@ begin
                                           :target_path => "#{Dir.pwd}/tests/test_1")
             
             generate_names(args)
-            puts "okay, I'm getting ready to create an engine named '#{@underscored_engine}'"
-            puts "that contains a library named '#{@underscored_module}'"
+            puts "okay, I'm getting ready to create an engine named '#{@underscored_engine}' that contains a library named '#{@underscored_module}'"
             puts "in #{@target}.  Let's go!"
             
             puts '... generating directory structure'
@@ -62,10 +48,8 @@ begin
                                           :target_path => "#{Dir.pwd}/tests/test_1")
             
             generate_names(args)
-            puts "okay, I'm getting ready to create a model named #{@underscored_model} in the '#{@camelized_engine}' engine named "
-            puts "module named '#{@underscored_module}'"
-            puts "in #{@target}.  Be forewarned, I'm not as useful as the engine generator..."
-            puts "you'll have to customize your migration, add the new route, and tweak the views manually. "
+            puts "okay, I'm getting ready to create a model named #{@underscored_model} in the '#{@camelized_engine}' engine module named '#{@underscored_module}'"
+            puts "in #{@target}.  Be forewarned, I'm not as useful as the engine generator... you'll have to customize your migration, add the new route, and tweak the views manually. "
             puts "otherwise, let's go!"
 
             puts '... generating model'
@@ -128,6 +112,9 @@ def build_framework
        FileUtils.mkdir dir
    end
    update_variables("templates/routes.rb","#{@target}/config/routes.rb")
+   update_variables("templates/README.txt","#{@target}/README")
+   update_variables("templates/Rakefile","#{@target}/Rakefile")
+   update_variables("templates/VERSION","#{@target}/VERSION")
 end
 def build_module
    [  "#{@app}/controllers/#{@underscored_module}", 
@@ -168,7 +155,25 @@ def update_variables(template, destination)
    f=  File.open(template)
    s=f.read
    f.close
-   trans = s.gsub("UnderscoredModule", @underscored_module).gsub("UnderscoredModel", @underscored_model).gsub("CamelizedModel",@camelized_model).gsub("CamelizedModule",@camelized_module).gsub("CamelizedEngine",@camelized_engine)
+   trans = s.gsub("UnderscoredModule", @underscored_module).gsub("UnderscoredEngine", @underscored_engine).gsub("UnderscoredModel", @underscored_model).gsub("CamelizedModel",@camelized_model).gsub("CamelizedModule",@camelized_module).gsub("CamelizedEngine",@camelized_engine)
    File.open(destination, 'w') {|f| f.write(trans) }
 end
   
+  
+  
+  
+  
+  
+begin
+ require "jeweler"
+ Jeweler::Tasks.new do |gem|
+   gem.name = "good_en_gen"
+   gem.summary = "Engine generator designed to support development for GoodContent"
+   gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
+   # other fields that would normally go in your gemspec
+   # like authors, email and has_rdoc can also be included here
+
+ end
+rescue
+ puts "Jeweler or one of its dependencies is not installed."
+end

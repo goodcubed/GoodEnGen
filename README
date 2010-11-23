@@ -1,0 +1,52 @@
+What is this thing?
+
+When it's all grown up, GoodEnGen will be a totally rad tool that allows you to generate and manage Rails 3 engines from the command line, and possibly from a fairly awesome ui as well...
+
+But, for the time being, it's a simple command line tool that allows you to generate engines, modules and models.  
+
+It's not thoroughly tested yet, only works from it's own top-level directory, and most likely isn't robust to any sort of malfeasance on your part, my part, or anyone's part, but it'll suit my needs for the next week or so as-is.
+
+For good measure, I've included good_blurb, the engine used as the starting point for this project that's known to work in my environment... so that you have a point of reference or just a starting point if you want to muck around in an engine known to work.
+
+
+
+Want to give it a shot anyway?  
+
+clone the repo
+
+cd into the main directory, and give 'er a whirl:
+
+rake EnGen:engine:new[engine_name,module_name,model_name,full_path_to_target_directory]
+rake EnGen:model:new[engine_name,module_name,model_name,full_path_to_target_directory]
+
+To generate a new module, generate a new model, and simply include the new module name in the appropriate spot.
+
+Example using the default target directory inside the 'tests' directory:
+
+rake EnGen:engine:new[good_food,mexican,burrito]        => new engine named GoodFood, 
+                                                            with a submodule Mexican and model Burrito
+                                                            
+rake EnGen:model:new[good_food,mexican,taco]            => new model Mexican::Taco in GoodFood engine    
+rake EnGen:model:new[good_food,mexican,chile_relleno]   => new model Mexican::ChileRelleno in GoodFood engine    
+
+Tired of Mexican?  Let's switch it up...
+rake EnGen:model:new[good_food,thai,pad_sie_ew]         => new module Thai w/model PadSieEw in GoodFood engine    
+rake EnGen:model:new[good_food,thai,prik_king]         => new model Thai::PrikKing in GoodFood engine    
+
+
+Note: there's no fanciness going on with generating migrations and views... each migration by default includes the fields "story", "headline", and... "creator_id", but they're yours for the tweaking.
+
+But you can easily gemify your engine to try it out using jeweler
+Install jeweler, if you don't have it yet
+(sudo) gem install jeweler
+
+Then build your gem with
+(sudo) rake install
+
+
+Require it in your app's gemfile, and migrate, and you should have a fairly simplistic, yet functional engine running in your application.
+
+
+Piece of cake, right?  Actually, a piece of cake sounds really good right about now...
+
+But seriously, I do hope to make this a bit more robust in the relatively near future, so any suggestions, improvements, etc., would most certainly be appreciated!
