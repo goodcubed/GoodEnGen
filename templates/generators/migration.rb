@@ -1,6 +1,6 @@
-class Create#{@camelized_model}sTable < ActiveRecord::Migration
+class CreateCamelizedModelsTable < ActiveRecord::Migration
   def self.up
-    create_table :#{@underscored_model}s do |t|
+    create_table :UnderscoredModels do |t|
       t.string :headline
       t.text :story
       t.integer :creator_id
@@ -10,6 +10,6 @@ class Create#{@camelized_model}sTable < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :#{@underscored_model}s
+    drop_table :UnderscoredModels
   end
 end

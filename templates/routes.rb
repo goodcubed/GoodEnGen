@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
    
-  puts "loading routes from #{@underscored_model} engine"
-  scope :module => "#{@underscored_module}" do
-     resources :#{@underscored_model}s
+  puts "loading routes from UnderscoredModel engine"
+  scope :module => "UnderscoredModule" do
+     resources :UnderscoredModels
   end
 end

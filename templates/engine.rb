@@ -1,9 +1,9 @@
-#lib/#{@underscored_module}/engine.rb
-require '#{@underscored_module}'
+#lib/UnderscoredModule/engine.rb
+require 'UnderscoredModule'
 require "rails"
 
 
-module #{@camelized_module}
+module CamelizedModule
  class Engine < Rails::Engine
     
   end
