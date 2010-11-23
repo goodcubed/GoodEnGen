@@ -1,10 +1,10 @@
-<%= form_for(@blurb, :url => blurbs_path) do |f| %>
-  <% if @blurb.errors.any? %>
+<%= form_for(@#{@underscored_model}, :url => #{@underscored_model}s_path) do |f| %>
+  <% if @#{@underscored_model}.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@blurb.errors.count, "error") %> prohibited this blurb from being saved:</h2>
+      <h2><%= pluralize(@#{@underscored_model}.errors.count, "error") %> prohibited this #{@underscored_model} from being saved:</h2>
 
       <ul>
-      <% @blurb.errors.full_messages.each do |msg| %>
+      <% @#{@underscored_model}.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

@@ -1,0 +1,27 @@
+<h1>Listing #{@underscored_model}s</h1>
+
+<table>
+  <tr>
+    <th>Headline</th>
+    <th>Story</th>
+    <th>Creator</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @#{@underscored_model}s.each do |#{@underscored_model}| %>
+  <tr>
+    <td><%= #{@underscored_model}.headline %></td>
+    <td><%= #{@underscored_model}.story %></td>
+    <td><%= #{@underscored_model}.creator_id %></td>
+    <td><%#= link_to 'Show', show_#{@underscored_model}_path(#{@underscored_model}) %></td>
+    <td><%#= link_to 'Edit', edit_#{@underscored_model}_path(#{@underscored_model}) %></td>
+    <td><%#= link_to 'Destroy', #{@underscored_model}, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New #{@camelized_model}', new_#{@underscored_model}_path %>

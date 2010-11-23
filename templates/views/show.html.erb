@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Headline:</b>
+  <%= @#{@underscored_model}.headline %>
+</p>
+
+<p>
+  <b>Story:</b>
+  <%= @#{@underscored_model}.story %>
+</p>
+
+<p>
+  <b>Creator:</b>
+  <%= @#{@underscored_model}.creator_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_#{@underscored_model}_path(@#{@underscored_model}) %> |
+<%= link_to 'Back', #{@underscored_model}s_path %>

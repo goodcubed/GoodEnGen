@@ -1,12 +1,12 @@
-# lib/generators/good_blurb/blurb_generator.rb
+# lib/generators/#{@underscored_module}/#{@underscored_model}_generator.rb
 require 'rails/generators'
 require 'rails/generators/migration'     
 
 
-class GoodBlurb::BlurbGenerator < Rails::Generators::Base
+class #{@camelized_module}::#{@camelized_model}Generator < Rails::Generators::Base
    include Rails::Generators::Migration
 
-   desc "This generator creates the migration required to support the GoodBlurb engine in GoodContent Manager"
+   desc "This generator creates the migration required to support the #{@camelized_module} engine in GoodContent Manager"
 
    def self.source_root
       @source_root ||= File.join(File.dirname(__FILE__), 'templates')
@@ -21,7 +21,7 @@ class GoodBlurb::BlurbGenerator < Rails::Generators::Base
    end
 
    def create_migration_file
-     migration_template 'migration.rb', 'db/migrate/create_blurbs_table.rb'
+     migration_template 'migration.rb', 'db/migrate/create_#{@underscored_model}s_table.rb'
    end
 
 end
