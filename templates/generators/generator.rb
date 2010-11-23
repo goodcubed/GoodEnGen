@@ -21,7 +21,7 @@ class CamelizedModule::CamelizedModelGenerator < Rails::Generators::Base
    end
 
    def create_migration_file
-     migration_template 'migration.rb', 'db/migrate/create_UnderscoredModels_table.rb'
+     migration_template 'create_UnderscoredModels_table.rb', 'db/migrate/create_UnderscoredModels_table.rb'
    end
 
 end
