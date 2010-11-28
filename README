@@ -50,9 +50,9 @@ gem "good_blurb", :require => "good_blurb", :path => "/Users/soychicka/Sites/rub
 
 
 
-Then, also inside your rails app, generate your migration using the name of your module, not the engine name
+Then, also inside your rails app, generate your migration using the name of the target module and model, not the engine name
 
-rails g good_blurb 
+rails g mexican:burrito 
 
 
 and rake db:migrate, and you should have a fairly simplistic, yet functional engine running in your application.
